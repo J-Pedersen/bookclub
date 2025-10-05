@@ -26,16 +26,21 @@
                     <tr>
                         <th scope="col">ISBN</th>
                         <th scope="col">Title</th>
+                        <th scope="col"># of Pages</th>
+                        <th scope="col">Author</th>
                         <th scope="col">Functions</th>
                     </tr>
                 </thead>
                 <tbody th:each="item : ${wishlist}">
                     <tr>
-                        <td th:text="${item.getIsbn()}"></td>
-                        <td th:text="${item.getTitle()}"></td>
+                        <td th:text="${item.isbn}"></td>
+                        <td th:text="${item.title}"></td>
+                        <td th:text="${item.pages}"></td>
+                        <td th:text="${item.author}"></td>
+                        
                         <td>
-                            <a href="#" class="link">Edit</a> |
-                            <a href="#" class="link">Delete</a>
+                            <a th:href="@{'/wishlist/edit/' + ${item.id}}" class="link">Edit</a> |
+                            <a th:href="@{'/wishlist/delete/' + ${item.id}}" class="link text-danger">Delete</a>
                         </td>
                     </tr>
                 </tbody>

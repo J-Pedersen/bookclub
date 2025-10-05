@@ -2,8 +2,14 @@ package com.bookclub.model;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class WishlistItem {
+@Document(collection = "wishlist")
+public class WishlistItem
+{
+    @Id
+    private String id;
 
     @NotNull
     @NotEmpty(message = "ISBN is a required field.")
@@ -13,11 +19,25 @@ public class WishlistItem {
     @NotEmpty(message = "Title is a required field.")
     private String title;
 
+    @NotNull
+    @NotEmpty(message = "Pages is a required field.")
+    private Integer pages;
+
+    @NotNull
+    @NotEmpty(message = "Author is a required field.")
+    private String author;
+
     public WishlistItem() {}
 
-    public WishlistItem(String isbn, String title) {
+    public WishlistItem(String isbn, String title, Integer pages, String author) {
         this.isbn = isbn;
         this.title = title;
+        this.pages = pages;
+        this.author = author;   
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setIsbn(String isbn) {
@@ -36,8 +56,27 @@ public class WishlistItem {
         return title;
     }
 
+        public void setPages(Integer pages) {
+        this.pages = pages;
+    }
+
+    public Integer getPages() {
+        return pages;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
     @Override
     public String toString() {
-        return String.format("WishlistItem{isbn=%s, title=%s}", isbn, title);
+        return String.format(
+            "WishlistItem{id=%s, isbn=%s, title=%s, pages=%d,author=%s}",
+            id, isbn, title, pages, author
+        );
     }
 }
