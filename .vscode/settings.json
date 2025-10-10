@@ -1,7 +1,10 @@
 {
     "cSpell.words": [
         "bookclub",
-        "springframework"
+        "javax",
+        "springframework",
+        "springsecurity",
+        "Thymeleaf"
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
 }
