@@ -1,5 +1,6 @@
 package com.bookclub.model;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
@@ -19,8 +20,8 @@ public class WishlistItem
     @NotEmpty(message = "Title is a required field.")
     private String title;
 
-    @NotNull
-    @NotEmpty(message = "Pages is a required field.")
+    @NotNull(message = "Pages is a required field.")
+    @Min(value = 1, message = "Pages must be greater than zero.")
     private Integer pages;
 
     @NotNull

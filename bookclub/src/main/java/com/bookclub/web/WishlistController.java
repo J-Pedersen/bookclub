@@ -25,11 +25,7 @@ public class WishlistController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showWishlist(Model model) {
-        List<WishlistItem> wishlist = wishlistDao.list();
-
-        model.addAttribute("wishlist", wishlist);
-
+    public String showWishlist() {
         return "wishlist/list";
     }
 
