@@ -14,7 +14,6 @@
         <div th:insert="~{fragments/header :: header}"></div>
 
         <div class="container py-5" style="width: 50%;">
-
             <div class="row">
                 <div class="col-12">
                     <h1 class="text-center">Book of the month details</h1>
@@ -35,10 +34,10 @@
                                 <p>
                                     <strong>Description:</strong> <br /><span th:text="${book.getDescription()}"></span>
                                 </p>
-                                <strong>Authors:</strong>
-                                <ul th:each="author : ${book.getAuthors()}">
-                                    <li th:text="${author}"></li>
-                                </ul>
+                                <strong>Web Link:</strong>
+                                <p>
+                                    <a href="#" target="_blank" th:href="${book.getInfoUrl()}" th:text="${book.getInfoUrl()}"></a>
+                                </p>
                             </div>
                         </div>
                     </div>
