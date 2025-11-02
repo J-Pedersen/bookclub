@@ -23,7 +23,23 @@ public class MongoWishlistDao implements WishlistDao {
 
     @Override
     public void update(WishlistItem entity) {
+        if (entity.getId() == null || entity.getId().isEmpty()) {
+            throw new IllegalArgumentException("Cannot update WishlistItem: id is null or empty");
+        }
 
+        WishlistItem wishlistItem = mongoTemplate.findById(entity.getId(), WishlistItem.class);
+
+        if (wishlistItem != null) {
+            wishlistItem.setIsbn(entity.getIsbn());
+            wishlistItem.setTitle(entity.getTitle());
+            wishlistItem.setPages(entity.getPages());
+            wishlistItem.setAuthor(entity.getAuthor());
+            wishlistItem.setUsername(entity.getUsername());
+
+            mongoTemplate.save(wishlistItem);
+        } else {
+            mongoTemplate.save(entity);
+        }
     }
 
     @Override
@@ -38,8 +54,12 @@ public class MongoWishlistDao implements WishlistDao {
     }
 
     @Override
-    public List<WishlistItem> list() {
-        return mongoTemplate.findAll(WishlistItem.class);
+    public List<WishlistItem> list(String username) {
+        Query query = new Query();
+
+        query.addCriteria(Criteria.where("username").is(username));
+
+        return mongoTemplate.find(query, WishlistItem.class);
     }
 
     @Override
