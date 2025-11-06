@@ -1,7 +1,5 @@
 package com.bookclub.model;
 
-import java.util.List;
-
 public class Book
 {
     private String isbn;

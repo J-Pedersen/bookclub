@@ -3,6 +3,7 @@
         "bookclub",
         "javax",
         "jayway",
+        "springdoc",
         "springframework",
         "springsecurity",
         "Thymeleaf"

@@ -1,8 +1,19 @@
 package com.bookclub.service.dao;
 
 import com.bookclub.model.WishlistItem;
-import com.bookclub.service.GenericCrudDao;
-import com.bookclub.service.GenericDao;
+import java.util.List;
 
-public interface WishlistDao extends GenericCrudDao<WishlistItem, String> {
+public interface WishlistDao {
+
+    void add(WishlistItem entity);
+
+    void update(WishlistItem entity);
+
+    boolean remove(WishlistItem entity);
+
+    boolean remove(String id);
+
+    List<WishlistItem> list(String username);
+
+    WishlistItem find(String key);
 }

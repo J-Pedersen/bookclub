@@ -45,11 +45,22 @@ public class MongoWishlistDao implements WishlistDao {
     @Override
     public boolean remove(WishlistItem entity) {
         Query query = new Query();
-
+    
         query.addCriteria(Criteria.where("id").is(entity.getId()));
-
+    
         mongoTemplate.remove(query, WishlistItem.class);
-
+    
+        return true;
+    }
+    
+    @Override
+    public boolean remove(String id) {
+        Query query = new Query();
+    
+        query.addCriteria(Criteria.where("id").is(id));
+    
+        mongoTemplate.remove(query, WishlistItem.class);
+    
         return true;
     }
 

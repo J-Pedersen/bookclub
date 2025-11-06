@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head></head>
     <body>
         <header th:fragment="header">
@@ -35,6 +35,10 @@
                         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                             <li class="nav-item">
                                 <a href="/swagger-ui.html" class="nav-link" target="_blank">OpenAPI Specification</a>
+                            </li>
+
+                            <li class="nav-item" sec:authorize="hasRole('ADMIN')">
+                                <a href="/monthly-books" class="nav-link" th:href="@{/monthly-books}">Monthly Books</a>
                             </li>
 
                             <li class="nav-item float-end">

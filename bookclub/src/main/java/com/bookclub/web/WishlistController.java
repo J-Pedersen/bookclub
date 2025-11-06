@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.security.core.Authentication;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/wishlist")
