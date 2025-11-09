@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .inMemoryAuthentication()
             .withUser("user").password(encoder.encode("password")).roles("USER")
             .and()
-            .withUser("jeff").password(encoder.encode("123456")).roles("USER", "ADMIN");
+            .withUser("testuser01").password(encoder.encode("password01")).roles("USER", "ADMIN");
     }
 
     @Override
